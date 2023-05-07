@@ -5,7 +5,7 @@
 
 ## Installation
 - clone repositories ```git clone https://github.com/akbarramadhannnn/unsplash```
-- write on your cmd ```cd frontend```
+- write on your cmd ```cd unsplash```
 - run ```npm install```
 - run ```npm start```
 - open ```http://localhost:3000``` to view it in your browser & make sure your laptop is connected to the network.
