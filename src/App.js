@@ -105,14 +105,20 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    let timeout;
     if (isInfiteScroll) {
-      const totalPage = page + 1;
-      if (search !== "") {
-        handleFetchSearch(totalPage, "scroll");
-      } else {
-        handleFetchList(totalPage, "scroll");
-      }
+      timeout = setTimeout(() => {
+        const totalPage = page + 1;
+        if (search !== "") {
+          handleFetchSearch(totalPage, "scroll");
+        } else {
+          handleFetchList(totalPage, "scroll");
+        }
+      }, 1000);
     }
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [isInfiteScroll, page, search, handleFetchSearch, handleFetchList]);
 
   useEffect(() => {

@@ -8,7 +8,12 @@ export const ApiGetPhotosList = async (page = 1) => {
 
   if (!findData) {
     const response = await axiosDefault.get(`/photos?page=${page}`);
-    await addListData(page, response);
+    const { code } = response;
+
+    if (code !== "ERR_BAD_REQUEST") {
+      await addListData(page, response);
+    }
+
     return response;
   }
 
@@ -23,7 +28,12 @@ export const ApiSearchPhotosList = async (page = 1, query = "") => {
     const response = await axiosDefault.get(
       `/search/photos?page=${page}&query=${query}`
     );
-    await addSearchData(page, query, response);
+
+    const { code } = response;
+
+    if (code !== "ERR_BAD_REQUEST") {
+      await addSearchData(page, query, response);
+    }
 
     return response;
   }
